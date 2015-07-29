@@ -1,0 +1,17 @@
+---
+- name: reload facts
+  action: setup
+
+### yum ###
+- name: yum clean all
+  sudo: yes
+  command: yum clean all
+
+- name: yum repolist
+  sudo: yes
+  command: yum repolist
+  ignore_errors: yes
+
+- name: yum upgrade
+  sudo: yes
+  yum: name=* state=latest

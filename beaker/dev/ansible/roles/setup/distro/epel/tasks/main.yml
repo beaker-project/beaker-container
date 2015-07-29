@@ -1,0 +1,10 @@
+---
+- name: install epel
+  sudo: yes
+  yum:
+    name: epel-release
+    state: present
+  notify:
+    - yum repolist
+
+- meta: flush_handlers

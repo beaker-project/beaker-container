@@ -1,0 +1,18 @@
+devbase:
+  build: base/CentOS6
+
+dev:
+  build: dev
+  working_dir: /workspace
+  user: "1000"
+  privileged: true
+
+sandbox:
+  image: beaker_dev
+  working_dir: /workspace
+  user: "1000"
+  privileged: true
+  volumes:
+    - ../../beaker:/workspace
+  ports:
+    - "8080:8080"

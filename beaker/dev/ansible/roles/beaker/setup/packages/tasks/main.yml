@@ -1,0 +1,34 @@
+---
+- name: clone the beaker repository
+  git:
+    repo: git://git.beaker-project.org/beaker
+    depth: 1
+    dest: /tmp/beaker
+    accept_hostkey: yes
+
+- name: install dependent beaker packages
+  sudo: yes
+  command: "yum-builddep -y /tmp/beaker/beaker.spec"
+
+- name: remove temporary cloned beaker repository
+  command: "rm -rf /tmp/beaker"
+
+- name: install runtime dependencies
+  sudo: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - nodejs-less
+    - python-daemon
+    - python-gunicorn
+    - python-isodate
+    - python-kerberos
+    - python-lockfile
+    - python-nose-progressive
+    - python-rdflib
+    - python-requests-kerberos
+    - python-tgexpandingformwidget
+    - python-tgexpandingformwidget
+    - rhts-python
+    - uglify-js

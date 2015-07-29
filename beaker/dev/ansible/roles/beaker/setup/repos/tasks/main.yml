@@ -1,0 +1,9 @@
+---
+- name: copy repo files to /etc/yum.repos.d
+  sudo: yes
+  get_url:
+    url: https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
+    dest: /etc/yum.repos.d/
+    mode: 0644
+
+- meta: flush_handlers

@@ -1,0 +1,13 @@
+---
+- name: ensure libselinux-python is installed
+  sudo: yes
+  yum: pkg=libselinux-python state=present
+  register: essential_pkg
+  ignore_errors: yes
+
+
+- fail:
+    msg: Tried to install libselinux-python and failed;
+         cannot proceeed without it. Please rectify and re-run
+  when: essential_pkg|failed
+

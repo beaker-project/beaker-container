@@ -1,0 +1,15 @@
+# This playbook sets the MariaDB SQL server.
+---
+- name: ensure mysql is running
+  sudo: yes
+  service:
+    name: mysqld
+    state: started
+
+- name: append privileges for mysql user
+  mysql_user:
+    name: "{{ item.name }}"
+    append_privs: true
+    priv: "{{ item.priv }}"
+  with_items: mysql_users
+  when: mysql_users

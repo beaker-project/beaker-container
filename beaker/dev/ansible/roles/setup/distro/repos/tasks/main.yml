@@ -1,0 +1,10 @@
+---
+- name: find existing repos
+  shell: ls -1 /etc/yum.repos.d/*.repo
+  register: existing_repos
+  ignore_errors: true
+
+- name: print repos found
+  debug: var=existing_repos.stdout_lines
+
+- meta: flush_handlers
