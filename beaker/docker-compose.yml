@@ -3,14 +3,11 @@ devbase:
 
 dev:
   build: dev
-  working_dir: /workspace
-  user: "1000"
-  privileged: true
 
 sandbox:
   image: beaker_dev
   working_dir: /workspace
-  user: "1000"
+  user: dev
   privileged: true
   volumes:
     - ../../beaker:/workspace
