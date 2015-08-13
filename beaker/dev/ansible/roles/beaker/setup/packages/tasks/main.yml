@@ -19,7 +19,9 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - firefox
     - nodejs-less
+    - openldap-servers
     - python-daemon
     - python-gunicorn
     - python-isodate
@@ -31,4 +33,6 @@
     - python-tgexpandingformwidget
     - python-tgexpandingformwidget
     - rhts-python
+    - selenium-python
     - uglify-js
+    - xorg-x11-server-Xvfb
