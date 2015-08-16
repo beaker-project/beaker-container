@@ -7,7 +7,7 @@ development environment.
 
 ### Prerequisites ###
 
-* <https://docs.docker.com/compose/install/> 
+* docker compose <https://docs.docker.com/compose/install/> 
 
 ### Building images ###
 
@@ -41,7 +41,25 @@ service port is not exposed by default.
 Follow the developer guide to initialize the database
 <https://beaker-project.org/dev/guide/getting-started.html>.
 
-### Save the container for future (re)use
+### Improving Performance ###
+
+By default the database is kept in the container, which leads to poor
+performance. You can speed up test times by keeping the database in a volume and
+mount it from a tempfs directory. Change the volumes in `docker-compose.yml` for
+example to:
+   
+    volumes:
+        - ../../beaker:/workspace
+        - /tmp/beaker_mysql:/var/lib/mysql/
+
+If you rerun the container with an empty `/var/lib/mysql` directory, you'll have
+to run the playbook again to create the database. The container provides the
+playbook in `/tmp` so run the container and:
+
+    $ cd /tmp/ansible
+    $ ansible-playbook -c local -t database dev-env.yml
+
+### Save the container for future (re)use ###
 
 Once the database is initialized, it is a good time to
 save the progress using `docker commit`

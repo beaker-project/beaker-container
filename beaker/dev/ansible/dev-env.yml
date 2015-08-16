@@ -14,7 +14,7 @@
       }
     - { role: beaker/setup/repos, tags: beaker }
     - { role: beaker/setup/packages, tags: beaker }
-    - { role: beaker/setup/db, tags: [beaker, db],
+    - { role: beaker/setup/db, tags: [beaker, database],
         mysql_users: [{ name: beaker, priv: "beaker_test.*:ALL" },
                       { name: beaker, priv: "beaker_migration_test.*:ALL" }]
       }
