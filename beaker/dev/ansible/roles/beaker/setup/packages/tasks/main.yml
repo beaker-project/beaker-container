@@ -31,7 +31,6 @@
     - python-rdflib
     - python-requests-kerberos
     - python-tgexpandingformwidget
-    - python-tgexpandingformwidget
     - rhts-python
     - selenium-python
     - uglify-js
