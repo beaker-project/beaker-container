@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: "user"
+      prompt: "user"
+      default: "admin"
+    - name: "password"
+      prompt: "user password"
+      default: "admin"
+    - name: "email"
+      prompt: "user email"
+      default: "test@beaker-project.org"
+      
+  roles:
+    - { role: beaker/server/init, tags: [server, init]  }

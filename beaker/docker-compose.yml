@@ -11,5 +11,6 @@ sandbox:
   privileged: true
   volumes:
     - ../../beaker:/workspace
+    - ./dev/ansible:/ansible
   ports:
     - "8080:8080"

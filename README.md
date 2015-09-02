@@ -52,28 +52,20 @@ example to:
         - ../../beaker:/workspace
         - /tmp/beaker_mysql:/var/lib/mysql/
 
-If you rerun the container with an empty `/var/lib/mysql` directory, you'll have
-to run the playbook again to create the database. The container provides the
-playbook in `/tmp` so run the container and:
+### Database Problems ###
 
-    $ cd /tmp/ansible
+If you rerun the container with an empty `/var/lib/mysql` directory, you'll have
+to run the playbook again to create the database.
+
+    $ cd /ansible
     $ ansible-playbook -c local -t database dev-env.yml
 
-### Save the container for future (re)use ###
+### Bootstrapping the Server ###
 
-Once the database is initialized, it is a good time to
-save the progress using `docker commit`
+You can initialise the server by running:
 
-
-    # create a docker image and tag it beaker_dev:<month><day>
-    $ docker ps -a | grep beaker_dev_run
-    # note the container id: something like beaker_dev_run_1
-    $ docker commit -p -m='after db init' <container_id> beaker_dev:$(date +%m%d)
-    $ docker tag beaker_dev:$(date +%m%d) beaker_dev:latest
-
-When you start the container again it will now be using the container state at
-`beaker_dev:$(date +%m%d)`. Remember, that you still need to start mysqld.
-
+    $ cd /ansible
+    $ ansible-playbook -c local bootstrap-server.yml
 
 ## Credits ##
 
