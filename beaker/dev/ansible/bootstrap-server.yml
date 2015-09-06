@@ -12,4 +12,14 @@
       default: "test@beaker-project.org"
       
   roles:
+    - { role: bennojoy.mysql, tags: database,
+        sudo: yes,
+        mysql_root_db_pass: '',
+        mysql_db: [{ name: beaker }, { name: beaker_test }, { name: beaker_migration_test }],
+        mysql_users: [{ name: beaker, pass: beaker, priv: "beaker.*:ALL" }]
+      }
+    - { role: beaker/setup/db, tags: [beaker, database],
+        mysql_users: [{ name: beaker, priv: "beaker_test.*:ALL" },
+                      { name: beaker, priv: "beaker_migration_test.*:ALL" }]
+      }
     - { role: beaker/server/init, tags: [server, init]  }

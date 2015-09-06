@@ -52,17 +52,18 @@ example to:
         - ../../beaker:/workspace
         - /tmp/beaker_mysql:/var/lib/mysql/
 
-### Database Problems ###
-
-If you rerun the container with an empty `/var/lib/mysql` directory, you'll have
-to run the playbook again to create the database.
-
-    $ cd /ansible
-    $ ansible-playbook -c local -t database dev-env.yml
-
 ### Bootstrapping the Server ###
 
-You can initialise the server by running:
+You can initialise the server by running. The playbook makes sure the databases
+are created and runs the beaker server init script:
+
+    $ cd /ansible
+    $ ansible-playbook -c local bootstrap-server.yml
+
+### Database Problems ###
+
+If you run into database problems, re-creating the database is a single
+playbook run:
 
     $ cd /ansible
     $ ansible-playbook -c local bootstrap-server.yml
