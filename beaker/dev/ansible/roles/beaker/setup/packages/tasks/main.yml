@@ -35,3 +35,5 @@
     - selenium-python
     - uglify-js
     - xorg-x11-server-Xvfb
+    - pylint
+    - pytest
