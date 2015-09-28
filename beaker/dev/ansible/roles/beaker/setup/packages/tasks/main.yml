@@ -37,3 +37,4 @@
     - xorg-x11-server-Xvfb
     - pylint
     - pytest
+    - TurboGears-1.1.3-2.el6eng.3.noarch
