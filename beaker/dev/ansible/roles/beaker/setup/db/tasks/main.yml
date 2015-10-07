@@ -13,3 +13,13 @@
     priv: "{{ item.priv }}"
   with_items: mysql_users
   when: mysql_users
+
+- name: alter mysql database for beaker
+  sudo: yes
+  copy:
+    src: "my.cnf"
+    dest: "/etc/my.cnf"
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
