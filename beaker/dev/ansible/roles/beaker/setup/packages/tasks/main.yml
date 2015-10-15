@@ -37,4 +37,15 @@
     - xorg-x11-server-Xvfb
     - pylint
     - pytest
-    - TurboGears-1.1.3-2.el6eng.3.noarch
+
+- name: workaround | delete installed TG version
+  sudo: yes
+  yum:
+    name: "TurboGears"
+    state: absent
+
+- name: workaround | prefer custom build TG from beaker server
+  sudo: yes
+  yum:
+    name: "TurboGears-1.1.3-2.el6eng.3.noarch"
+    state: present
