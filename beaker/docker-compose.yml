@@ -6,12 +6,11 @@ dev:
 
 sandbox:
   image: beaker_dev
-  working_dir: /workspace
+  working_dir: /home/dev
   user: dev
   privileged: true
   volumes:
-    - ../../beaker:/workspace
+    - ../../beaker:/home/dev/beaker
     - /tmp/beaker_mysql:/var/lib/mysql/
-    - ./dev/ansible:/ansible
   ports:
     - "8080:8080"

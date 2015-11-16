@@ -1,7 +1,5 @@
 FROM centos:centos6.6
 
-VOLUME ["/workspace"]
-
 RUN yum install -y zsh vim sudo lsof nc less curl && \
     echo 'dev ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     echo 'Defaults:dev !requiretty' >> /etc/sudoers && \

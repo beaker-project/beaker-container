@@ -4,9 +4,9 @@ RUN ansible-galaxy install bennojoy.mysql
 
 USER dev
 
-ADD ansible/ /tmp/ansible/
-RUN cd /tmp/ansible &&\
+ADD ansible/ /home/dev/ansible/
+RUN cd /home/dev/ansible &&\
     PYTHONUNBUFFERED=1 ansible-playbook -c local dev-env.yml -vvv
 
-WORKDIR /workspace
+WORKDIR /home/dev
 CMD bash

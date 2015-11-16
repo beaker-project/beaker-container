@@ -24,49 +24,36 @@ mysql databases for the server and two for running the integration tests.
 
 Make sure you have the beaker sources cloned. The docker container will include
 the repository (by default located at ../../beaker relative to
-docker-compose.yml) under /workspace. This allows to hack on beaker from your
-host development environment, while being able to run tests etc in docker.
+docker-compose.yml) under `/home/dev/beaker`. This allows to hack on beaker from
+your host development environment, while being able to run tests etc in docker.
 
 Use docker-compose to run the container:
 
+    $ ls
+    base dev docker-compose.yml
     $ docker-compose run --service-ports sandbox
 
-Keep in mind that mysqld is not running yet:
-
-    $ sudo service mysqld start
-
-Keep in mind that the root password for mysql is set to an empty string. The
-service port is not exposed by default.
-
-Follow the developer guide to initialize the database
-<https://beaker-project.org/dev/guide/getting-started.html>.
-
-### Improving Performance ###
-
-By default the database is kept in the container, which leads to poor
-performance. You can speed up test times by keeping the database in a volume and
-mount it from a tempfs directory. Change the volumes in `docker-compose.yml` for
-example to:
-   
-    volumes:
-        - ../../beaker:/workspace
-        - /tmp/beaker_mysql:/var/lib/mysql/
+The database is not running yet. It's best to initialise the server as described
+next.
 
 ### Bootstrapping the Server ###
 
-You can initialise the server by running. The playbook makes sure the databases
-are created and runs the beaker server init script:
+The playbook makes sure the databases are created and runs the beaker server
+init script:
 
-    $ cd /ansible
-    $ ansible-playbook -c local bootstrap-server.yml
+    docker $ cd
+    docker $ cd ansible
+    docker $ ansible-playbook -c local bootstrap-server.yml
 
 ### Database Problems ###
 
-If you run into database problems, re-creating the database is a single
-playbook run:
+If you run into database problems, just delete the database on the host and
+re-create it in the docker environment by restarting the container:
 
-    $ cd /ansible
-    $ ansible-playbook -c local bootstrap-server.yml
+    $ sudo rm -rf /tmp/beaker_mysql
+    $ docker-compose run --service-ports sandbox
+    docker $ cd ansible
+    docker $ ansible-playbook -c local bootstrap-server.yml
 
 ## Credits ##
 
