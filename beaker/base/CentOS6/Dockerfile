@@ -5,7 +5,7 @@ RUN yum install -y zsh vim sudo lsof nc less curl && \
     echo 'Defaults:dev !requiretty' >> /etc/sudoers && \
     useradd -u 1000 dev && \
     usermod -aG wheel dev && \
-    chown dev:dev /workspace && \
+    chown dev:dev /home/dev && \
     yum clean all
 
 ### ansible setup ###
