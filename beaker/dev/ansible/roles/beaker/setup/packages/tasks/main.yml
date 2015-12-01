@@ -37,6 +37,7 @@
     - xorg-x11-server-Xvfb
     - pylint
     - pytest
+    - PyXML  # needed by beah and used on Jenkins in dogfood tests
 
 - name: workaround | delete installed TG version
   sudo: yes
