@@ -1,6 +1,6 @@
 FROM beaker_devbase:latest
 
-RUN ansible-galaxy install bennojoy.mysql
+RUN ansible-galaxy install geerlingguy.mysql
 
 USER dev
 

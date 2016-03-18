@@ -7,12 +7,13 @@
     state: started
 
 - name: append privileges for mysql user
+  sudo: yes
   mysql_user:
     name: "{{ item.name }}"
     append_privs: true
     priv: "{{ item.priv }}"
-  with_items: mysql_users
-  when: mysql_users
+  with_items: "{{ mysql_users }}"
+  when: "{{ mysql_users }}"
 
 - name: alter mysql database for beaker
   sudo: yes

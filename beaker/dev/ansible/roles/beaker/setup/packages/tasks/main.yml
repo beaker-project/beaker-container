@@ -6,6 +6,12 @@
     dest: /tmp/beaker
     accept_hostkey: yes
 
+- name: install yum utility
+  sudo: yes
+  yum:
+    name: yum-utils
+    state: present
+
 - name: install dependent beaker packages
   sudo: yes
   command: "yum-builddep -y /tmp/beaker/beaker.spec"
