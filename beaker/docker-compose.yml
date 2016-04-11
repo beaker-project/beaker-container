@@ -7,10 +7,12 @@ dev:
 sandbox:
   image: beaker_dev
   working_dir: /home/dev
-  user: dev
   privileged: true
   volumes:
     - ../../beaker:/home/dev/beaker
     - /tmp/beaker_mysql:/var/lib/mysql/
+    - ./:/opt/entrypoints
   ports:
     - "8080:8080"
+  entrypoint:
+    - /opt/entrypoints/runwithlocaluser.sh

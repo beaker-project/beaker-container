@@ -14,8 +14,7 @@ development environment.
 Build the devbase image. The image is based on beaker_base which should be build
 before hand.
 
-    $ docker-compose build devbase
-    $ docker-compose build dev
+    $ docker-compose build
 
 The dev image is build by running an ansible playbook. It will create three
 mysql databases for the server and two for running the integration tests.
@@ -35,6 +34,13 @@ Use docker-compose to run the container:
 
 The database is not running yet. It's best to initialise the server as described
 next.
+
+### Different Host User/GID than 1000###
+
+In case your local user has a different UID than 1000 (e.g. you're using SSSD),
+start the container by supplying your uid/gid:
+
+    $ docker-compose run --service-ports -e LOCAL_USER_ID=`id -u` -e LOCAL_GROUP_ID=`id -g` sandbox
 
 ### Bootstrapping the Server ###
 

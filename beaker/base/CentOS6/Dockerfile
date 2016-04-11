@@ -1,11 +1,10 @@
 FROM centos:centos6.6
 
 RUN yum install -y zsh vim sudo lsof nc less curl && \
-    echo 'dev ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
-    echo 'Defaults:dev !requiretty' >> /etc/sudoers && \
-    useradd -u 1000 dev && \
-    usermod -aG wheel dev && \
-    chown dev:dev /home/dev && \
+    echo 'ansibledev ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    echo 'Defaults:ansibledev !requiretty' >> /etc/sudoers && \
+    useradd -u 1002 ansibledev && \
+    usermod -aG wheel ansibledev && \
     yum clean all
 
 ### ansible setup ###
