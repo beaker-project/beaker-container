@@ -1,4 +1,4 @@
-FROM centos:centos6.6
+FROM centos:centos6
 
 RUN yum install -y zsh vim sudo lsof nc less curl && \
     echo 'ansibledev ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
