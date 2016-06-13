@@ -24,6 +24,7 @@
   yum:
     name: "{{ item }}"
     state: present
+    enablerepo: "beaker-server-testing"
   with_items:
     - firefox
     - nodejs-less
