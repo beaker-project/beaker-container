@@ -1,5 +1,12 @@
 # Beaker Development Environment #
 
+** Note **
+To use this setup, you need to understand Docker and Beaker. The docker
+environment does not provide a production level setup, but is just enough to
+hack on the WebUI/Client and run the tests. If you want a proper development
+environment, use [Beaker in a box](https://beaker-project.org/docs/in-a-box/).
+
+
 This repository contains docker files and ansible play books to create a
 development environment.
 
