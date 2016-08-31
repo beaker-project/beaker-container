@@ -44,6 +44,7 @@
     - pylint
     - pytest
     - PyXML  # needed by beah and used on Jenkins in dogfood tests
+    - xz  # to import database dumps
 
 - name: workaround | delete installed TG version
   sudo: yes
