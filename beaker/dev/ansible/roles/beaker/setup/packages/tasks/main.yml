@@ -38,7 +38,6 @@
     - python-rdflib
     - python-requests-kerberos
     - python-tgexpandingformwidget
-    - rhts-python
     - selenium-python
     - uglify-js
     - xorg-x11-server-Xvfb
