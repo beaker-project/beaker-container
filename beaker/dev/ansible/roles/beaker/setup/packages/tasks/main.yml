@@ -30,7 +30,6 @@
     - firefox
     - nodejs-less
     - openldap-servers
-    - python-daemon
     - python-gunicorn
     - python-isodate
     - python-kerberos
@@ -46,6 +45,18 @@
     - pytest
     - PyXML  # needed by beah and used on Jenkins in dogfood tests
     - xz  # to import database dumps
+    - centos-release-openstack-juno # OpenStack
+
+- name: install OpenStack deps
+  sudo: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-keystoneclient
+    - python-glanceclient
+    - python-novaclient
+    - python-neutronclient
 
 - name: workaround | delete installed TG version
   sudo: yes
