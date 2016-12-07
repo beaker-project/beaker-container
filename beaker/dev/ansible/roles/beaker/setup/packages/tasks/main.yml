@@ -4,6 +4,7 @@
     repo: git://git.beaker-project.org/beaker
     depth: 1
     dest: /tmp/beaker
+    version: develop
     accept_hostkey: yes
 
 - name: install yum utility
