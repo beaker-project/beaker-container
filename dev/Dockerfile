@@ -1,4 +1,4 @@
-FROM beaker-docker_devbase:latest
+FROM beaker-container_devbase:latest
 
 USER ansibledev
 
