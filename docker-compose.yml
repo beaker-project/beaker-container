@@ -1,18 +1,20 @@
-devbase:
-  build: base/CentOS7
+version: '2'
+services:
+  devbase:
+    build: base/CentOS7
 
-dev:
-  build: dev
+  dev:
+    build: dev
 
-sandbox:
-  image: beaker_dev
-  working_dir: /home/dev
-  privileged: true
-  volumes:
-    - ../../beaker:/home/dev/beaker
-    - /tmp/beaker_mysql:/var/lib/mysql/
-    - ./:/opt/entrypoints
-  ports:
-    - "8080:8080"
-  entrypoint:
-    - /opt/entrypoints/runwithlocaluser.sh
+  sandbox:
+    image: beaker_dev
+    working_dir: /home/dev
+    privileged: true
+    volumes:
+      - ../../beaker:/home/dev/beaker
+      - /tmp/beaker_mysql:/var/lib/mysql/
+      - ./:/opt/entrypoints
+    ports:
+      - "8080:8080"
+    entrypoint:
+      - /opt/entrypoints/runwithlocaluser.sh
