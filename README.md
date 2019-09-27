@@ -4,7 +4,7 @@
 To use this setup, you need to understand Docker and Beaker. The docker
 environment does not provide a production level setup, but is just enough to
 hack on the WebUI/Client and run the tests. If you want a proper development
-environment, use [Beaker in a box](https://beaker-project.org/docs/in-a-box/).
+environment, use [Beaker in a box](https://github.com/beaker-project/beaker-in-a-box).
 
 
 This repository contains docker files and ansible playbooks to create a
@@ -14,7 +14,7 @@ development environment.
 
 ### Prerequisites ###
 
-* docker compose <https://docs.docker.com/compose/install/> 
+* [Docker Compose](https://docs.docker.com/compose/install/) 
 
 ### Building images ###
 
@@ -67,7 +67,3 @@ re-create it in the docker environment by restarting the container:
     $ docker-compose run --service-ports sandbox
     docker $ cd ansible
     docker $ ansible-playbook -c local bootstrap-server.yml
-
-## Credits ##
-
-* Sunil Thaha
