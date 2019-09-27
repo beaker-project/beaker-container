@@ -1,4 +1,5 @@
 # Beaker Development Environment #
+![](https://github.com/beaker-project/beaker-container/workflows/Docker%20Compose%20CI/badge.svg)
 
 **Note**  
 To use this setup, you need to understand Docker and Beaker. The docker
