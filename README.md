@@ -2,20 +2,23 @@
 ![](https://github.com/beaker-project/beaker-container/workflows/Docker%20Compose%20CI/badge.svg)
 
 **Note**  
-To use this setup, you need to understand Docker and Beaker. The docker
+To use this setup, you need to understand containers and Beaker. The container
 environment does not provide a production level setup, but is just enough to
 hack on the WebUI/Client and run the tests. If you want a proper development
 environment, use [Beaker in a box](https://github.com/beaker-project/beaker-in-a-box).
 
-
-This repository contains docker files and ansible playbooks to create a
+This repository contains container files and ansible playbooks to create a
 development environment.
 
 ## Creating a development sandbox ##
 
 ### Prerequisites ###
 
+Docker/Docker Compose or Podman/Podman Compose are required.
+* [Docker](https://www.docker.com/)
+* [Podman](https://podman.io/)
 * [Docker Compose](https://docs.docker.com/compose/install/) 
+* [Podman Compose](https://github.com/containers/podman-compose)
 
 ### Building images ###
 
@@ -29,7 +32,7 @@ mysql databases for the server and two for running the integration tests.
 
 ### Running container ###
 
-Make sure you have the beaker sources cloned. The docker container will include
+Make sure you have the beaker sources cloned. The container will include
 the repository (by default located at ../../beaker relative to
 docker-compose.yml) under `/home/dev/beaker`. This allows to hack on beaker from
 your host development environment, while being able to run tests etc in docker.
