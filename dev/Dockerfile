@@ -1,8 +1,8 @@
-FROM beaker_devbase:latest
-
-RUN ansible-galaxy install geerlingguy.mysql
+FROM beaker-docker_devbase:latest
 
 USER ansibledev
+
+RUN ansible-galaxy install geerlingguy.mysql
 
 ADD ansible/ /home/dev/ansible/
 RUN cd /home/dev/ansible &&\
