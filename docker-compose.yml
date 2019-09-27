@@ -1,5 +1,5 @@
 devbase:
-  build: base/CentOS6
+  build: base/CentOS7
 
 dev:
   build: dev

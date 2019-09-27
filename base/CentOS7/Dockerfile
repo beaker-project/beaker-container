@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:centos7
 
 RUN yum install -y zsh vim sudo lsof nc less curl && \
     echo 'ansibledev ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
@@ -11,7 +11,7 @@ RUN yum install -y zsh vim sudo lsof nc less curl && \
 
 RUN yum clean all && \
     yum install -y \
-        https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm && \
+        https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     yum -y install \
         PyYAML python-jinja2 python-httplib2 python-keyczar \
         gcc libyaml-devel python-devel python-crypto pyasn1 \
