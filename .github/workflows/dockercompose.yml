@@ -1,6 +1,12 @@
 name: Docker Compose CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master  # Push events on master branch
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
 
