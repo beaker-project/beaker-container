@@ -43,9 +43,8 @@
     - xorg-x11-server-Xvfb
     - pylint
     - pytest
-    - PyXML  # needed by beah and used on Jenkins in dogfood tests
     - xz  # to import database dumps
-    - centos-release-openstack-juno # OpenStack
+    - centos-release-openstack-stein  # OpenStack
 
 - name: install OpenStack deps
   sudo: yes
