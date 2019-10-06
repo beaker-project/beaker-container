@@ -1,7 +1,7 @@
 ---
 - name: clone the beaker repository
   git:
-    repo: git://git.beaker-project.org/beaker
+    repo: https://github.com/beaker-project/beaker.git
     depth: 1
     dest: /tmp/beaker
     version: develop
