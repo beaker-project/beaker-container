@@ -2,7 +2,6 @@ FROM beaker-container_devbase:latest
 
 USER ansibledev
 
-RUN ansible-galaxy install geerlingguy.mysql
 
 ADD ansible/ /home/dev/ansible/
 RUN cd /home/dev/ansible &&\

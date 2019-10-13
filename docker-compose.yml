@@ -1,4 +1,8 @@
 version: '2'
+
+volumes:
+  beaker-db-data:
+
 services:
   devbase:
     build: base/CentOS7
@@ -12,9 +16,16 @@ services:
     privileged: true
     volumes:
       - ../../beaker:/home/dev/beaker
-      - /tmp/beaker_mysql:/var/lib/mysql/
       - ./:/opt/entrypoints
     ports:
       - "8080:8080"
     entrypoint:
       - /opt/entrypoints/runwithlocaluser.sh
+
+  beaker-database:
+    build: ./db
+    image: beaker-db
+    volumes:
+      - beaker-db-data:/var/lib/mysql
+    expose:
+      - 3306
