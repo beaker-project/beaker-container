@@ -12,4 +12,5 @@
       default: "test@beaker-project.org"
       
   roles:
+    - { role: setup/post-install, become: yes }
     - { role: beaker/server/init, tags: [server, init]  }

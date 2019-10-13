@@ -2,6 +2,6 @@
 - name: Run init
   command: python bkr/server/tools/init.py --user={{ user }} --password={{ password }} --email={{ email }}
   args:
-    chdir: "~/beaker/Server"
+    chdir: "/home/dev/beaker/Server"
   environment:
     PYTHONPATH: "../Common:."

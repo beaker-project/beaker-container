@@ -7,18 +7,15 @@ services:
   sandbox:
     build: ./dev
     image: beaker-dev
-    working_dir: /home/dev
     environment:
       - LOCAL_USER_ID=${BEAKER_LOCAL_USER_ID}
       - LOCAL_GROUP_ID=${BEAKER_LOCAL_GROUP_ID}
+    working_dir: /home/ansibledev
     privileged: true
     volumes:
-      - ../../beaker:/home/dev/beaker
-      - ./:/opt/entrypoints
+      - ../beaker:/home/dev/beaker
     ports:
       - "8080:8080"
-    entrypoint:
-      - /opt/entrypoints/runwithlocaluser.sh
 
   beaker-database:
     build: ./db

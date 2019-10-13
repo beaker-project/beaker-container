@@ -1,0 +1,27 @@
+---
+- name: Create dev group with proper ID
+  group:
+    name: dev
+    gid: "{{ ansible_env.LOCAL_USER_ID }}"
+
+- name: Create dev user with proper ID
+  user:
+    name: dev
+    uid: "{{ ansible_env.LOCAL_GROUP_ID }}"
+    group: dev
+    home: /home/dev
+    shell: /bin/bash
+
+- name: Change permissions for dev home folder
+  file:
+    path: /home/dev
+    state: directory
+    owner: dev
+    group: dev
+
+- name: Enable dev user as a sudoer
+  blockinfile:
+    path: /etc/sudoers
+    block: | 
+      dev ALL=(ALL) NOPASSWD:ALL
+      Defaults:dev !requiretty

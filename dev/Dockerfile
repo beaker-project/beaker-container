@@ -32,10 +32,11 @@ RUN mkdir /etc/ansible/ && \
 
 USER ansibledev
 
+ADD ansible/ /home/ansibledev/ansible/
 
-ADD ansible/ /home/dev/ansible/
-RUN cd /home/dev/ansible &&\
+RUN cd /home/ansibledev/ansible &&\
     PYTHONUNBUFFERED=1 ansible-playbook -c local dev-env.yml -vvv
 
-WORKDIR /home/dev
-CMD bash
+WORKDIR /home/ansibledev
+
+CMD tail -f /dev/null
