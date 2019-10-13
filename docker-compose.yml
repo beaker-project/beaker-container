@@ -4,14 +4,9 @@ volumes:
   beaker-db-data:
 
 services:
-  devbase:
-    build: base/CentOS7
-
-  dev:
-    build: dev
-
   sandbox:
-    image: beaker_dev
+    build: ./dev
+    image: beaker-dev
     working_dir: /home/dev
     privileged: true
     volumes:
