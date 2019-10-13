@@ -8,6 +8,9 @@ services:
     build: ./dev
     image: beaker-dev
     working_dir: /home/dev
+    environment:
+      - LOCAL_USER_ID=${BEAKER_LOCAL_USER_ID}
+      - LOCAL_GROUP_ID=${BEAKER_LOCAL_GROUP_ID}
     privileged: true
     volumes:
       - ../../beaker:/home/dev/beaker
