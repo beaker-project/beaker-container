@@ -6,12 +6,6 @@
 
 - hosts: all
   roles:
-    - { role: geerlingguy.mysql, tags: database,
-        sudo: yes,
-        mysql_root_password: '',
-        mysql_databases: [{ name: beaker }, { name: beaker_test }, { name: beaker_migration_test }],
-        mysql_users: [{ name: beaker, password: beaker, priv: "beaker.*:ALL" }]
-      }
     - { role: beaker/setup/repos, tags: beaker }
     - { role: beaker/setup/packages, tags: beaker }
   tasks:

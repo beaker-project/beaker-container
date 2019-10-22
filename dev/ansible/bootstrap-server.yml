@@ -12,14 +12,5 @@
       default: "test@beaker-project.org"
       
   roles:
-    - { role: geerlingguy.mysql, tags: database,
-        sudo: yes,
-        mysql_root_password: '',
-        mysql_databases: [{ name: beaker }, { name: beaker_test }, { name: beaker_migration_test }],
-        mysql_users: [{ name: beaker, password: beaker, priv: "beaker.*:ALL" }]
-      }
-    - { role: beaker/setup/db, tags: [beaker, database],
-        mysql_users: [{ name: beaker, priv: "beaker_test.*:ALL" },
-                      { name: beaker, priv: "beaker_migration_test.*:ALL" }]
-      }
+    - { role: setup/post-install, become: yes }
     - { role: beaker/server/init, tags: [server, init]  }
