@@ -19,7 +19,7 @@ RUN yum clean all && \
         libselinux-python && \
     yum clean all
 
-RUN pip install --upgrade setuptools
+RUN pip install --upgrade pip==9.0.3 && pip install --upgrade setuptools
 
 RUN mkdir /etc/ansible/ && \
     echo -e '[local]\nlocalhost' > /etc/ansible/hosts && \
