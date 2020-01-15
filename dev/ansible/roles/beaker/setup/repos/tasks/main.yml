@@ -1,6 +1,6 @@
 ---
 - name: copy repo files to /etc/yum.repos.d
-  sudo: yes
+  become: yes
   get_url:
     url: https://beaker-project.org/yum/beaker-server-RedHatEnterpriseLinux.repo
     dest: /etc/yum.repos.d/

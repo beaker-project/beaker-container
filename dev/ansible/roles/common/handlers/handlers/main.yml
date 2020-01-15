@@ -4,14 +4,14 @@
 
 ### yum ###
 - name: yum clean all
-  sudo: yes
+  become: yes
   command: yum clean all
 
 - name: yum repolist
-  sudo: yes
+  become: yes
   command: yum repolist
   ignore_errors: yes
 
 - name: yum upgrade
-  sudo: yes
+  become: yes
   yum: name=* state=latest

@@ -1,4 +1,4 @@
 - name: yum upgrade
-  sudo: yes
+  become: yes
   yum: name=* state=latest
 
