@@ -23,39 +23,37 @@
 - name: install runtime dependencies
   become: yes
   yum:
-    name: "{{ item }}"
+    name:
+        - firefox
+        - nodejs-less
+        - openldap-servers
+        - python-gunicorn
+        - python-isodate
+        - python-kerberos
+        - python-lockfile
+        - python-nose-progressive
+        - python-rdflib
+        - python-requests-kerberos
+        - python-tgexpandingformwidget
+        - selenium-python
+        - uglify-js
+        - xorg-x11-server-Xvfb
+        - pylint
+        - pytest
+        - xz  # to import database dumps
+        - centos-release-openstack-stein  # OpenStack
     state: present
     enablerepo: "beaker-server-testing"
-  with_items:
-    - firefox
-    - nodejs-less
-    - openldap-servers
-    - python-gunicorn
-    - python-isodate
-    - python-kerberos
-    - python-lockfile
-    - python-nose-progressive
-    - python-rdflib
-    - python-requests-kerberos
-    - python-tgexpandingformwidget
-    - selenium-python
-    - uglify-js
-    - xorg-x11-server-Xvfb
-    - pylint
-    - pytest
-    - xz  # to import database dumps
-    - centos-release-openstack-stein  # OpenStack
 
 - name: install OpenStack deps
   become: yes
   yum:
-    name: "{{ item }}"
+    name:
+        - python-keystoneclient
+        - python-glanceclient
+        - python-novaclient
+        - python-neutronclient
     state: present
-  with_items:
-    - python-keystoneclient
-    - python-glanceclient
-    - python-novaclient
-    - python-neutronclient
 
 - name: workaround | delete installed TG version
   become: yes
