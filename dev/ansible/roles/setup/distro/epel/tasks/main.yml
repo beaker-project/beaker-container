@@ -1,6 +1,6 @@
 ---
 - name: install epel
-  sudo: yes
+  become: yes
   yum:
     name: epel-release
     state: present

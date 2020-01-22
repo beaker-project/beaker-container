@@ -8,63 +8,61 @@
     accept_hostkey: yes
 
 - name: install yum utility
-  sudo: yes
+  become: yes
   yum:
     name: yum-utils
     state: present
 
 - name: install dependent beaker packages
-  sudo: yes
+  become: yes
   command: "yum-builddep -y /tmp/beaker/beaker.spec"
 
 - name: remove temporary cloned beaker repository
   command: "rm -rf /tmp/beaker"
 
 - name: install runtime dependencies
-  sudo: yes
+  become: yes
   yum:
-    name: "{{ item }}"
+    name:
+        - firefox
+        - nodejs-less
+        - openldap-servers
+        - python-gunicorn
+        - python-isodate
+        - python-kerberos
+        - python-lockfile
+        - python-nose-progressive
+        - python-rdflib
+        - python-requests-kerberos
+        - python-tgexpandingformwidget
+        - selenium-python
+        - uglify-js
+        - xorg-x11-server-Xvfb
+        - pylint
+        - pytest
+        - xz  # to import database dumps
+        - centos-release-openstack-stein  # OpenStack
     state: present
     enablerepo: "beaker-server-testing"
-  with_items:
-    - firefox
-    - nodejs-less
-    - openldap-servers
-    - python-gunicorn
-    - python-isodate
-    - python-kerberos
-    - python-lockfile
-    - python-nose-progressive
-    - python-rdflib
-    - python-requests-kerberos
-    - python-tgexpandingformwidget
-    - selenium-python
-    - uglify-js
-    - xorg-x11-server-Xvfb
-    - pylint
-    - pytest
-    - xz  # to import database dumps
-    - centos-release-openstack-stein  # OpenStack
 
 - name: install OpenStack deps
-  sudo: yes
+  become: yes
   yum:
-    name: "{{ item }}"
+    name:
+        - python-keystoneclient
+        - python-glanceclient
+        - python-novaclient
+        - python-neutronclient
     state: present
-  with_items:
-    - python-keystoneclient
-    - python-glanceclient
-    - python-novaclient
-    - python-neutronclient
 
 - name: workaround | delete installed TG version
-  sudo: yes
+  become: yes
   yum:
     name: "TurboGears"
     state: absent
 
 - name: workaround | prefer custom build TG from beaker server
-  sudo: yes
+  become: yes
   yum:
     name: "TurboGears-1.1.3-8.el7.noarch"
     state: present
